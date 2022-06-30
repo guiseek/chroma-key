@@ -1,0 +1,14 @@
+body{
+  min-height: 100vh;
+  display: flex;
+  margin: 0;
+  align-items: center;
+  justify-content: center;
+  background-color: #7f7f;
+}
+
+canvas{
+  // background-image: url(assets/Rock-in-Rio4.jpeg);
+  background-position: bottom;
+  background-size: cover;
+}
