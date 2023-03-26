@@ -1,4 +1,4 @@
-import getStateHandler from './utilities/state'
+import {getStateHandler} from './utilities/state'
 
 const handler = getStateHandler<ChromaKeyState>()
 

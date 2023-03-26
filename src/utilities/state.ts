@@ -1,5 +1,7 @@
-function handleState<T>(data: T) {
-  let state: T | null = data
+let state: any
+
+function handleState<T = unknown>(data: T) {
+  state = data
   // const events: ((state: T) => void)[] = []
   const events = new Set<(state: T | null) => void>()
 
@@ -30,14 +32,4 @@ function handleState<T>(data: T) {
   }
 }
 
-let stateHandler: ReturnType<typeof handleState>
-
-const getStateHandler = <T>(data: T | null = null) => {
-  if (!stateHandler) {
-    stateHandler = handleState(data)
-  }
-
-  return stateHandler as ReturnType<typeof handleState<T>>
-}
-
-export default getStateHandler
+export const getStateHandler = <T>(data: T | null = null) => handleState(data)

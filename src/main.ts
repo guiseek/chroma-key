@@ -1,16 +1,17 @@
-import getStateHandler from './utilities/state'
+import { getStateHandler } from './utilities/state'
+import { query } from './utilities/query'
 import chromaKey from './chroma-key'
 import './style.scss'
 
-const videoView = document.querySelector<HTMLVideoElement>('#videoView')!
-const canvasView = document.querySelector<HTMLCanvasElement>('#canvasView')!
+const videoView = query('video')
+const canvasView = query('canvas')
 const videoContext = canvasView.getContext('2d')!
 
-const handler = getStateHandler<ChromaKeyState>()
-
-handler.on(console.log)
-
-handler.set({ videoView, videoContext, canvasView })
+getStateHandler<ChromaKeyState>({
+  videoView,
+  videoContext,
+  canvasView,
+}).get()
 
 navigator.mediaDevices.getUserMedia({ video: true }).then((streamVideo) => {
   videoView.srcObject = streamVideo
